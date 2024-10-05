@@ -17,7 +17,7 @@ def listar_usuarios(lista: list[list[str, str]]):
     Função responsável por percorrer a lista passada e exibir os indices dentro da lista principal e nas sublistas.
     """
     for indice, item in enumerate(lista):
-        print(f"No índice {indice},está o usuário {item[0]}, com a password {item[1]}")
+        print(f"No índice {indice},está o usuário {item[0]}, com a senha {item[1]}")
     if len(lista) == 0:
         print("No momento não há nenhum usuário cadastrado!")
 

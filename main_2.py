@@ -24,9 +24,9 @@ def listar_usuarios(lista: list[list[str]]):
     """
     conte = 0
     tamanho_sublista = len(lista[0])
-    for i in range(tamanho_sublista):
-        if lista[0][i] != '' and lista[1][i] != '':
-            print(i, lista[0][i], lista[1][i])
+    for indice in range(tamanho_sublista):
+        if lista[0][indice] != '' and lista[1][indice] != '':
+            print(f"No índice {indice},está o usuário {lista[0][indice]}, com a senha {lista[1][indice]}")
             conte += 1
     if conte == 0:
         print("No momento não há nenhum usuário cadastrado!")
