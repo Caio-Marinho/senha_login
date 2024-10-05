@@ -1,6 +1,6 @@
 from function import cadastra_usuario, listar_usuarios, login
 
-usarios_cadastrado = []
+usuarios_cadastrados = []
 cont = 0
 while cont < 3:
     menu = ['Cadastro', 'Mostrar Usuário', 'Login', 'Sair']
@@ -14,23 +14,23 @@ while cont < 3:
         continue
     match opcao:
         case 1:
-            nome = input("Digite seu nome: ")
-            senha = input("Digite sua senha: ")
+            nome = input("Digite seu name: ")
+            senha = input("Digite sua password: ")
             while senha == '':
-                senha = input("A senha não pode ficar vazia,"
-                              "Digite Novamente sua senha: ")
+                senha = input("A password não pode ficar vazia,"
+                              "Digite Novamente sua password: ")
             while nome == '':
-                nome = input("O seu nome não pode ficar vazio,"
-                             "Digite Novamente seu nome: ")
-            cadastro = cadastra_usuario(usarios_cadastrado, nome, senha)
+                nome = input("O seu name não pode ficar vazio,"
+                             "Digite Novamente seu name: ")
+            cadastro = cadastra_usuario(usuarios_cadastrados, nome, senha)
             print(cadastro)
         case 2:
-            listar_usuarios(usarios_cadastrado)
+            listar_usuarios(usuarios_cadastrados)
         case 3:
             print(f"você tem {3 - cont} de 3 tentativas para logar!")
-            nome = input("Digite seu nome: ")
-            senha = input("Digite sua senha: ")
-            cond, texto = login(usarios_cadastrado, nome, senha)
+            nome = input("Digite seu name: ")
+            senha = input("Digite sua password: ")
+            cond, texto = login(usuarios_cadastrados, nome, senha)
             if not cond:
                 print(texto)
                 cont += 1
