@@ -51,7 +51,7 @@ def login(lista: list[list[str, str]], nome: str, senha: str) -> bool and str:
     return False, "Usuário não cadastrado!"
 
 
-def deletar(lista: list[list[str]], nome: str, senha: str) -> str:
+def deletar(lista: list[list[str, str]], nome: str, senha: str) -> str:
     """
     Função para deletar item da lista e vaga a posição que aquele item possuia
     Args: lista(list[list[str]]): Matriz com nome e senha de usuário
@@ -72,7 +72,18 @@ def deletar(lista: list[list[str]], nome: str, senha: str) -> str:
     return "Usuário não encontrado"
 
 
-def atualizar(lista, nome, senha, novo_nome=None, novo_senha=None):
+def atualizar(lista: list[list[str, str]], nome: str, senha: str, novo_nome: str = None, novo_senha: str = None) -> str:
+    """
+    Função responsável por atualizar a matriz
+    Args: lista(list[list[str, str]]): recebe uma matriz de nome e senha
+    Args: nome(str): recebe o nome
+    Args: senha(str): recebe a senha
+    Args:novo_nome(str): recebe o novo nome caso exista
+    Args:novo_senha(str): recebe a nova senha caso exista
+
+    Returns:
+        str: retorna uma mensagem de string
+    """
     for item in lista:
         if item[0] == nome:
             if item[1] == senha:
