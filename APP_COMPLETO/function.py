@@ -8,7 +8,7 @@ def cadastra_usuario(lista: list, nome: str, senha: str) -> str:
     Returns:
         str: Uma mensagem indicando que o usuario foi cadastrado com sucesso
     """
-    if ['', ''] in lista:
+    if ['', ''] in lista:  # verifica se tem na lista, uma sublista ['','']
         for i in lista:
             if i[0] == '' and i[1] == '':
                 i[0] = nome
@@ -42,16 +42,16 @@ def login(lista: list[list[str, str]], nome: str, senha: str) -> bool and str:
            bem-sucedido (True) ou não (False), e o segundo elemento é uma
            mensagem de texto explicando o resultado do login.
     """
-    for user in lista:
-        if user[0] == nome:
-            if user[1] == senha:
+    for user in lista:  # Percorre a lista
+        if user[0] == nome: # Verifica se o nome está na posição 0
+            if user[1] == senha: # Verifica se a senha está na posição 1
                 return True, "Login efetuado com sucesso!"
             else:
                 return False, "Senha incorreta!"
     return False, "Usuário não cadastrado!"
 
 
-def deletar(lista: list[list[str, str]], nome: str, senha: str) -> str:
+def deletar(lista: list[list[str]], nome: str, senha: str) -> str:
     """
     Função para deletar item da lista e vaga a posição que aquele item possuia
     Args: lista(list[list[str]]): Matriz com nome e senha de usuário
