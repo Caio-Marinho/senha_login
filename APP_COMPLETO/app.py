@@ -1,6 +1,6 @@
-from function import cadastra_usuario, listar_usuarios, login, deletar, atualizar
+from function import *
 
-usuarios_cadastrados = []
+usuarios_cadastrados = carregar()
 cont = 0
 while cont < 3:
     menu = ['Cadastro', 'Mostrar Usuário', 'Login', 'Deletar', 'Atualizar', 'Sair']
@@ -24,6 +24,7 @@ while cont < 3:
                              "Digite Novamente seu name: ")
             cadastro = cadastra_usuario(usuarios_cadastrados, nome, senha)
             print(cadastro)
+            salvar(usuarios_cadastrados)
         case 2:
             listar_usuarios(usuarios_cadastrados)
         case 3:
@@ -45,6 +46,7 @@ while cont < 3:
             senha = input("Digite sua password: ")
             delete = deletar(usuarios_cadastrados, nome, senha)
             print(delete)
+            salvar(usuarios_cadastrados)
         case 5:
             nome = input("Digite seu name: ")
             senha = input("Digite sua password: ")
@@ -67,6 +69,7 @@ while cont < 3:
                 nova_senha = input("Digite sua nova senha: ")
                 atualizado = atualizar(usuarios_cadastrados, nome, senha, novo_nome, nova_senha)
                 print(atualizado)
+                salvar(usuarios_cadastrados)
         case 6:
             print("Saindo...")
             break

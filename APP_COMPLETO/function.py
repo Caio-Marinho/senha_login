@@ -18,7 +18,7 @@ def cadastra_usuario(lista: list, nome: str, senha: str) -> str:
     return "Usuário Cadastrado com Sucesso!"
 
 
-def listar_usuarios(lista: list[list[str, str]]):
+def listar_usuarios(lista: list[list[str]]):
     """
     Função responsável por percorrer a lista passada e exibir os indices dentro da lista principal e nas sublistas.
     """
@@ -28,7 +28,7 @@ def listar_usuarios(lista: list[list[str, str]]):
         print("No momento não há nenhum usuário cadastrado!")
 
 
-def login(lista: list[list[str, str]], nome: str, senha: str) -> bool and str:
+def login(lista: list[list[str]], nome: str, senha: str) -> bool and str:
     """
     Função para realizar o login de um usuário.
 
@@ -43,8 +43,8 @@ def login(lista: list[list[str, str]], nome: str, senha: str) -> bool and str:
            mensagem de texto explicando o resultado do login.
     """
     for user in lista:  # Percorre a lista
-        if user[0] == nome: # Verifica se o nome está na posição 0
-            if user[1] == senha: # Verifica se a senha está na posição 1
+        if user[0] == nome:  # Verifica se o nome está na posição 0
+            if user[1] == senha:  # Verifica se a senha está na posição 1
                 return True, "Login efetuado com sucesso!"
             else:
                 return False, "Senha incorreta!"
@@ -72,7 +72,7 @@ def deletar(lista: list[list[str]], nome: str, senha: str) -> str:
     return "Usuário não encontrado"
 
 
-def atualizar(lista: list[list[str, str]], nome: str, senha: str, novo_nome: str = None, novo_senha: str = None) -> str:
+def atualizar(lista: list[list[str]], nome: str, senha: str, novo_nome: str = None, novo_senha: str = None) -> str:
     """
     Função responsável por atualizar a matriz
     Args: lista(list[list[str, str]]): recebe uma matriz de nome e senha
@@ -94,3 +94,28 @@ def atualizar(lista: list[list[str, str]], nome: str, senha: str, novo_nome: str
                 return "Dados atualizados com sucesso!"
             return "Senha incorreta!"
     return "Usuário não cadastrado"
+
+
+def salvar(lista: list[list[str]]):
+    with open('dados.txt', 'w+') as dados:
+        for item in lista:
+            for idx, i in enumerate(item):
+                if i == '':  # Ignora itens vazios
+                    pass
+                elif idx == len(item) - 1:  # Se for o último item da lista
+                    dados.write(f'{i};')
+                else:
+                    dados.write(f'{i},')  # Adiciona vírgula se não for o último item
+            dados.write('\n')  # Adiciona uma nova linha após cada item da lista
+
+
+def carregar() -> list[list[str]]:
+    try:
+        with open('dados.txt', 'r') as dados:
+            lista = []
+            for indice, linha in enumerate(dados):
+                lista.append(linha.strip().split(','))
+                lista[indice][1] = lista[indice][1][:-1]
+        return lista
+    except IOError:
+        return []
